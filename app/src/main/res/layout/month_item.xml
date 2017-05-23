@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_month"
+        android:layout_width="@dimen/px146"
+        android:layout_height="@dimen/px88"
+        android:layout_margin="@dimen/px30"
+        android:gravity="center"
+        android:text="@string/app_text"
+        android:textSize="@dimen/px42" />
+
+</LinearLayout>

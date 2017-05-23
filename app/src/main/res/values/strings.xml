@@ -1,0 +1,32 @@
+<resources>
+
+    <string name="app_name">Laundry</string>
+    <string name="app_text">Test</string>
+    <string name="app_icon">Image</string>
+
+    <string name="rmb">￥&#160;</string>
+
+
+    <!--提示语-->
+    <string name="loading_in">正在加载中…</string>
+    <string name="network_anomaly">网络异常，请稍后再试！</string>
+
+
+    <string name="username">手机</string>
+    <string name="password">密码</string>
+    <string name="login">立即登录</string>
+    <string name="forget_password">忘记密码?</string>
+    <string name="month_total">月总收成</string>
+    <string name="order_count">成单数</string>
+    <string name="order_commission">成单提成</string>
+    <string name="username_balance">账号余额</string>
+    <string name="apply_for_cash">申请提现</string>
+    <string name="withdraw_rule">提现规则</string>
+
+
+    <string name="please_input_username">请输入账号</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="please_input_password_length">请输入6&#8211;20位密码</string>
+
+
+</resources>

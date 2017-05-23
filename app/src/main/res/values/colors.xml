@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="bg_theme">#F2F2F2</color>
+    <color name="bg_loading">#222222</color>
+    <color name="bg_month_item">#FB6122</color>
+
+    <color name="btn_checked">#00B8EF</color>
+    <color name="btn_unchecked">#E5E5E5</color>
+    <color name="btn_withdraw">#FF6108</color>
+
+
+    <color name="font_gray">#888888</color>
+    <color name="font_black">#333333</color>
+    <color name="font_black_light">#50585E</color>
+    <color name="font_red">#EC4F39</color>
+    <color name="font_orange">#F3A826</color>
+
+
+    <color name="line_gray">#c2c1c1</color>
+    <color name="line_blue">#1FB8ED</color>
+
+
+</resources>

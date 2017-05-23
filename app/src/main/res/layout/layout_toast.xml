@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout_Match_Vertical_Style"
+    android:background="@color/transparent"
+    android:gravity="center">
+
+    <!--加载进度条／Toast自定义吐司弹窗-->
+
+    <RelativeLayout
+        android:id="@+id/rl_toast"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/px140"
+        android:alpha="0.8"
+        android:background="@drawable/shape_toast"
+        android:paddingEnd="@dimen/px30"
+        android:paddingStart="@dimen/px30">
+
+        <ImageView
+            android:id="@id/iv_icon"
+            android:layout_width="@dimen/px60"
+            android:layout_height="@dimen/px60"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_icon"
+            android:src="@mipmap/icon_loading" />
+
+        <TextView
+            android:id="@id/tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/px30"
+            android:layout_toEndOf="@id/iv_icon"
+            android:text="@string/loading_in"
+            android:textColor="@color/white"
+            android:textSize="@dimen/px40" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

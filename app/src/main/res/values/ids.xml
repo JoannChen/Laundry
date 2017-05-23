@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <!--功能区-->
+
+    <item name="iv_icon" type="id" />
+    <item name="tv_text" type="id" />
+
+
+    <!--常用组件-->
+    <item name="listView" type="id" />
+    <item name="gridView" type="id" />
+    <item name="scrollView" type="id"/>
+    <item name="surfaceView" type="id" />
+    <item name="viewSwitcher" type="id" />
+
+
+
+    <!--文本id-->
+    <item name="text_1" type="id" />
+    <item name="text_2" type="id" />
+    <item name="text_3" type="id" />
+    <item name="text_4" type="id" />
+    <item name="text_5" type="id" />
+    <item name="text_6" type="id" />
+
+    <!--线条id-->
+    <item name="line_1" type="id" />
+    <item name="line_2" type="id" />
+    <item name="line_3" type="id" />
+    <item name="line_4" type="id" />
+    <item name="line_5" type="id" />
+    <item name="line_6" type="id" />
+
+    <!--图标id-->
+    <item name="icon_1" type="id" />
+    <item name="icon_2" type="id" />
+    <item name="icon_3" type="id" />
+    <item name="icon_4" type="id" />
+    <item name="icon_5" type="id" />
+
+
+</resources>
