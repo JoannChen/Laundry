@@ -7,28 +7,28 @@
     <ImageView
         android:layout_width="@dimen/px28"
         android:layout_height="@dimen/px38"
-        android:background="@mipmap/icon_water"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/px44"/>
+        android:layout_marginStart="@dimen/px44"
+        android:background="@mipmap/icon_home_drips" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/px36"
-        android:layout_marginLeft="@dimen/px30"
         android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/px30"
+        android:layout_weight="1"
         android:ellipsize="end"
         android:lines="1"
         android:scrollHorizontally="true"
-        android:layout_weight="1"
-        android:text="@string/default_title"/>
+        android:text="@string/default_title"
+        android:textSize="@dimen/px36" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/px36"
-        android:layout_marginLeft="@dimen/px25"
-        android:layout_marginRight="@dimen/px120"
         android:layout_gravity="center_vertical"
-        android:text="@string/default_time"/>
+        android:layout_marginEnd="@dimen/px120"
+        android:layout_marginStart="@dimen/px25"
+        android:text="@string/default_time"
+        android:textSize="@dimen/px36" />
 </LinearLayout>
