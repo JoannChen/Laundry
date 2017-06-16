@@ -2,6 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zuoyu.laundry">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+
     <application
         android:name="com.zuoyu.laundry.application.MyApplication"
         android:allowBackup="true"
@@ -11,7 +28,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--iPhone6尺寸-->
+        <!--android尺寸-->
 
         <meta-data
             android:name="design_width"
@@ -21,7 +38,7 @@
             android:value="1920" />
 
 
-        <activity android:name=".activity.WithdrawActivity">
+        <activity android:name=".activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +46,32 @@
             </intent-filter>
         </activity>
 
+        <!--登录-->
+        <activity android:name=".activity.LoginActivity"/>
+
+        <!--忘记密码-->
         <activity android:name=".activity.ForgetActivity"/>
 
+        <!--首页-->
+        <!--<activity android:name=".activity.HomeActivity"/>-->
+
+        <!--日收成-->
+        <activity android:name=".activity.DayDetailsActivity"/>
+
+        <!--月收成-->
+        <activity android:name=".activity.MonthDetailsActivity"/>
+
+        <!--订单列表，带选项卡-->
+        <activity android:name=".activity.OrderNavActivity"/>
+
+        <!--订单详情-->
+        <activity android:name=".activity.OrderDetailsActivity"/>
+
+        <!--提现-->
+        <activity android:name=".activity.WithdrawActivity"/>
+
+        <!--提现记录-->
+        <activity android:name=".activity.WithdrawRecordActivity"/>
 
     </application>
 

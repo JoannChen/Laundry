@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/px145"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@id/text_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/px50"
+        android:text="@string/app_text"
+        android:textSize="@dimen/px44" />
+
+    <!--今天12:17-->
+
+    <TextView
+        android:id="@id/text_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/px55"
+        android:layout_toEndOf="@id/text_1"
+        android:gravity="end"
+        android:text="@string/app_text"
+        android:textColor="@color/font_black"
+        android:textSize="@dimen/px58" />
+
+    <!--¥ 250.00-->
+
+    <View
+        android:layout_width="@dimen/px980"
+        android:layout_height="@dimen/px1"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/line_gray" />
+
+
+</RelativeLayout>

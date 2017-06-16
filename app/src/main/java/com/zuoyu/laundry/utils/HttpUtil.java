@@ -9,6 +9,8 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zuoyu.laundry.R;
 import com.zuoyu.laundry.application.Constant;
+import com.zuoyu.laundry.application.UrlManage;
+import com.zuoyu.laundry.model.TokenAuthModel;
 import com.zuoyu.laundry.utils.http.HMAC;
 import com.zuoyu.laundry.utils.http.HttpResult;
 import com.zuoyu.laundry.widget.LoadingProgress;
@@ -23,6 +25,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import okhttp3.Call;
+import okhttp3.RequestBody;
 
 /**
  * <pre>
@@ -68,7 +71,7 @@ public class HttpUtil {
      * @param url    请求URL
      * @param result 结果回调
      */
-    public <T> void post(Map<String, String> params, final String url, final HttpResult<T> result) {
+    public <T> void post(final Map<String, String> params, final String url, final HttpResult<T> result) {
 
         if (!ToolUtil.isNetConnection()) {
             result.onFailed(0, context.getString(R.string.network_anomaly));
@@ -80,10 +83,9 @@ public class HttpUtil {
             loadingProgress.show();
         }
 
-
         OkHttpUtils.post()
-                .headers(getHeader(buildUrlParams(url, params)))
-                .params(getJsonParams(params))
+                .headers(getHeader())
+                .params(params)
                 .url(url)
                 .tag(context)
                 .build().execute(new StringCallback() {
@@ -95,6 +97,22 @@ public class HttpUtil {
                 }
 
                 LogUtil.e("URL:" + url + " 状态码：" + id + " 错误信息：" + e.getMessage());
+
+                if (e.getMessage().equals("request failed , reponse's code is : 401")) {
+                    put(null, UrlManage.REFRESH_URL, new HttpResult<String>() {
+                        @Override
+                        public void onSuccess(String mResult) {
+                            LogUtil.i("刷新Token");
+                            post(params, url, result);
+                        }
+
+                        @Override
+                        public void onFailed(int errCord, String errMsg) {
+
+                        }
+                    });
+                }
+
                 result.onFailed(id, e.getMessage());
             }
 
@@ -108,33 +126,12 @@ public class HttpUtil {
                 LogUtil.e("【当前版本】V" + ToolUtil.getVersionName());
                 LogUtil.e("【Post请求JSON】" + response);
 
+                result.onSuccess((T) parseJson(response, result.getObj(), result.getType()));
 
-                try {
-                    org.json.JSONObject jsonObject = new org.json.JSONObject(response);
-
-                    switch (jsonObject.optInt("code")) {
-                        case 200:
-                            result.onSuccess((T) parseJson(response, result.getObj(), result.getType()));
-                            break;
-                        case 401:
-//                            MyApplication.exitApplication((Activity) context, true);
-//                            ToastUtil.show("401");
-//                            ExitLoginDialog.show(context);
-                            break;
-                        default:
-                            ToastUtil.show(ToolUtil.isEmpty(jsonObject.optString("msg")) ?
-                                    context.getString(R.string.network_anomaly) :
-                                    jsonObject.optString("msg"));
-                            break;
-
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
 
             }
         });
+
     }
 
 
@@ -145,7 +142,7 @@ public class HttpUtil {
      * @param url    请求URL
      * @param result 结果回调
      */
-    public <T> void get(Map<String, String> params, final String url, final HttpResult<T> result) {
+    public <T> void get(final Map<String, String> params, final String url, final HttpResult<T> result) {
 
         if (!ToolUtil.isNetConnection()) {
             return;
@@ -156,7 +153,7 @@ public class HttpUtil {
         }
 
         OkHttpUtils.get()
-                .headers(getHeader(buildUrlParams(url, params)))
+                .headers(getHeader())
                 .params(params)
                 .url(url)
                 .tag(context)
@@ -171,6 +168,22 @@ public class HttpUtil {
 
                 result.onFailed(id, e.getMessage());
                 LogUtil.i("URL:" + url + " 状态码：" + id + " 错误信息：" + e.getMessage());
+
+                if (e.getMessage().equals("request failed , reponse's code is : 401")) {
+                    put(null, UrlManage.REFRESH_URL, new HttpResult<String>() {
+                        @Override
+                        public void onSuccess(String mResult) {
+                            LogUtil.i("刷新Token");
+                            get(params, url, result);
+                        }
+
+                        @Override
+                        public void onFailed(int errCord, String errMsg) {
+
+                        }
+                    });
+                }
+
             }
 
             @Override
@@ -181,19 +194,30 @@ public class HttpUtil {
                 }
 
                 LogUtil.i("Get请求JSON：" + response);
-                try {
-                    org.json.JSONObject jsonObject = new org.json.JSONObject(response);
-                    int code = jsonObject.optInt("code");
 
-                    if (code == 200) {
-                        result.onSuccess((T) parseJson(response, result.getObj(), result.getType()));
-                    } else {
-                        ToastUtil.show(jsonObject.optString("msg"));
-                    }
+                result.onSuccess((T) parseJson(response, result.getObj(), result.getType()));
 
-                } catch (org.json.JSONException e) {
-                    e.printStackTrace();
-                }
+            }
+        });
+    }
+
+
+    public <T> void put(final Map<String, String> params, final String url, final HttpResult<T> result) {
+        OkHttpUtils
+                .put()
+                .headers(getHeader())
+                .requestBody(buildParams(params))
+                .url(url)
+                .tag(context)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                result.onFailed(id, e.getMessage());
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                result.onSuccess((T) parseJson(response, result.getObj(), result.getType()));
             }
         });
     }
@@ -202,51 +226,11 @@ public class HttpUtil {
     /**
      * 生成头信息
      *
-     * @param urlParams 访问的url
      * @return 生成头信息
      */
-    private Map<String, String> getHeader(String urlParams) {
-
+    private Map<String, String> getHeader() {
         Map<String, String> header = new HashMap<>();
-
-        String token = SharedUtil.getString(SharedUtil.TOKEN);
-
-        LogUtil.i("【token】" + token);
-
-        // 要加密数据
-        StringBuilder builder = new StringBuilder();
-
-        // 时间戳
-        final String timestampStr = String.valueOf(System.currentTimeMillis() / 1000);
-
-
-        try {
-            builder.append(timestampStr)
-                    .append(URLDecoder.decode(urlParams, "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        String builderAppend = builder.toString().trim();
-
-        try {
-
-            //加密
-            byte[] data = HMAC.encodeHmacSHA256(
-                    builderAppend.getBytes(), (ToolUtil.isEmpty(token) ? Constant.PROJECT_KEY.getBytes() : token.getBytes()));
-
-            final String encryptContent = new String(Hex.encode(data));
-
-            // 创建加解密对象，放入头信息
-            header.put("Timestamp", timestampStr);
-            header.put("Authorization", encryptContent); // 加密串
-            header.put("Projectid", Constant.PROJECT_ID);
-
-
-            LogUtil.e("【头信息加密前】：" + builderAppend);
-            LogUtil.e("【头信息加密后】：" + encryptContent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        header.put("Authorization", "Bearer " + TokenAuthModel.getInstance().getToken()); // 加密串
         return header;
     }
 
@@ -322,43 +306,27 @@ public class HttpUtil {
 
 
     /**
-     * 追加参数到URL
+     * 拼接参数的方法
      *
      * @param params 请求参数
-     * @return 带参数的URL
+     * @return 参数拼接
      */
-    private String buildUrlParams(String url, Map<String, String> params) {
-        String urlParams = "?";
-        try {
+    private String buildParams(Map<String, String> params) {
+        if(params != null){
+            StringBuilder urlParams = new StringBuilder("?");
+            int index = 0;
+            for (Map.Entry entry : params.entrySet()) {
 
-
-            Iterator<?> iterator = params.entrySet().iterator();
-
-
-            while (iterator.hasNext()) {
-
-                Map.Entry entry = (Map.Entry) iterator.next();
-                if (urlParams.length() > 1) {
-                    urlParams = urlParams + "&";
+                if (index != 0) {
+                    urlParams.append("&");
                 }
-                try {
-                    urlParams = urlParams
-                            + entry.getKey().toString()
-                            + "="
-                            + URLEncoder.encode(entry.getValue().toString(),
-                            "utf-8");
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
+                urlParams.append(entry.getKey()).append("=").append(entry.getValue());
+                index++;
             }
-
-            LogUtil.e("【请求URL】" + url + urlParams);
-
-        } catch (Exception e) {
-            LogUtil.e("【HttpUtil中请求参数为空】");
+            LogUtil.i("参数：" + urlParams.toString());
+            return urlParams.toString();
         }
 
-        return url + urlParams;
-
+        return "none";
     }
 }

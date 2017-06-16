@@ -28,45 +28,9 @@ public class SharedUtil {
     /**
      * 文件名
      */
-    private static final String FILE_NAME = "51Manager";
-
-    // string token
-    public static final String TOKEN = "token";
-
-    // 登录状态？登录：未登录；
-//    public static final String IS_LOGIN = "isLogin";
-
-    // string token
-    public static final String USER_INFO = "userInfo";
-
-    // string 用户id
-    public static final String USER_ID = "userId";
-
-    // string 车场id
-    public static final String PARK_ID = "parkId";
-
-    // string 商户名
-    public static final String USER_NAME = "userName";
-
-    // string 车场名
-    public static final String PARK_NAME = "parkName";
+    private static final String FILE_NAME = "Laundry";
 
 
-    /**
-     * 将所有本地数据置空
-     */
-    public static void setEmptyAllData() {
-        setString(TOKEN, "");
-        setObject(USER_INFO, null);
-        setString(USER_ID, "");
-//        setBoolean(IS_LOGIN, false);
-//        setString(PARK_ID, "");
-//        setString(PARK_NAME, "");
-//        setString(FILTER_SEARCH, "");
-//        setString(FILTER_DATE, "");
-//        setString(FILTER_PAY_TYPE, "");
-//        setString(FILTER_CAR_TYPE, "");
-    }
 
     /**
      * 获取SharedPreferences对象

@@ -5,6 +5,7 @@
     <string name="app_icon">Image</string>
 
     <string name="rmb">￥&#160;</string>
+    <string name="_price">0.00</string>
 
 
     <!--提示语-->
@@ -12,21 +13,44 @@
     <string name="network_anomaly">网络异常，请稍后再试！</string>
 
 
+    <string name="no_take">未取</string>
+    <string name="no_send">未送</string>
+    <string name="have_give">已交</string>
+
     <string name="username">手机</string>
     <string name="password">密码</string>
     <string name="login">立即登录</string>
     <string name="forget_password">忘记密码?</string>
-    <string name="month_total">月总收成</string>
     <string name="order_count">成单数</string>
     <string name="order_commission">成单提成</string>
     <string name="username_balance">账号余额</string>
+
+    <string name="withdraw">提现</string>
+    <string name="record">记录</string>
     <string name="apply_for_cash">申请提现</string>
     <string name="withdraw_rule">提现规则</string>
+    <string name="commission_day">今日提成</string>
+    <string name="commission_month">本月提成</string>
+    <string name="day_income_details">日收成明细</string>
+    <string name="month_income_details">月收成明细</string>
+    <string name="day_total_income">日总收成</string>
+    <string name="month_total_income">月总收成</string>
 
+    <string name="do_not_take">未取</string>
+    <string name="do_not_send">未送</string>
+
+
+    <string name="default_title">洗乐汇上线公共，一大波优惠来袭!</string>
+    <string name="default_time">1小时前</string>
 
     <string name="please_input_username">请输入账号</string>
     <string name="please_input_password">请输入密码</string>
     <string name="please_input_password_length">请输入6&#8211;20位密码</string>
 
+
+    <string name="num0.00">0.00</string>
+    <string name="num0">0</string>
+
+    <string name="cash">提现记录</string>
 
 </resources>

@@ -1,5 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Layout_Match_Vertical_Style">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Layout_Match_Vertical_Style"
+    android:background="@color/white">
+
+    <com.zuoyu.laundry.widget.CircleImageView
+        android:id="@id/icon_1"
+        android:layout_width="@dimen/px238"
+        android:layout_height="@dimen/px238"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/px44"
+        android:src="@mipmap/bg_default_head" />
+
+    <com.zuoyu.laundry.widget.RatingBar
+        android:id="@id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/px61"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/px20"
+        app:starNumber="5" />
+
+
+    <!--今日提成／本月提成-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px220">
+
+        <LinearLayout
+            android:id="@+id/ll_day"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@id/tv_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/num0.00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px44" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/px20"
+                android:text="@string/commission_day"
+                android:textColor="@color/font_gray"
+                android:textSize="@dimen/px44" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/px4"
+            android:layout_height="@dimen/px130"
+            android:layout_gravity="center_vertical"
+            android:background="@color/bg_line_gray" />
+
+        <LinearLayout
+            android:id="@+id/ll_month"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@id/tv_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/num0.00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px44" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/px20"
+                android:text="@string/commission_month"
+                android:textColor="@color/font_gray"
+                android:textSize="@dimen/px44" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!--未取／未送-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px160"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:id="@+id/ll_take"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/btn_checked"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/px92"
+                android:layout_height="@dimen/px92"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/px124"
+                android:contentDescription="@string/app_icon"
+                android:src="@mipmap/icon_home_no_take" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/px38"
+                android:text="@string/do_not_take"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px44" />
+
+            <TextView
+                android:id="@id/tv_take"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/px15"
+                android:text="@string/num0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px58" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_send"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/bg_orange"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/px100"
+                android:layout_height="@dimen/px78"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/px106"
+                android:background="@mipmap/icon_home_no_send"
+                android:contentDescription="@string/app_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/px38"
+                android:text="@string/do_not_send"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px44" />
+
+            <TextView
+                android:id="@id/tv_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/px15"
+                android:text="@string/num0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px58" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--消息通知选项卡-->
+
+    <com.zuoyu.laundry.widget.NavAnimation
+        android:id="@id/navAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px152" />
 
 </LinearLayout>

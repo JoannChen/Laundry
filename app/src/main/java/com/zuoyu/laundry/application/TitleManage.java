@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.zuoyu.laundry.R;
 import com.zuoyu.laundry.base.BaseActivity;
+import com.zuoyu.laundry.utils.ViewUtil;
 
 
 /**
@@ -113,7 +114,7 @@ public class TitleManage implements View.OnClickListener {
      *
      * @param bgColor 背景颜色
      */
-    public void setTitleBgRes(int bgColor) {
+    public void setTitleBackground(int bgColor) {
         titleView.setBackgroundResource(bgColor);
     }
 
@@ -185,7 +186,7 @@ public class TitleManage implements View.OnClickListener {
      */
     public void setRightBtn(int icon) {
         rightImg.setVisibility(icon > 0 ? View.VISIBLE : View.GONE);
-        rightImg.setImageResource(icon);
+        rightImg.setBackgroundResource(icon);
     }
 
 
@@ -259,6 +260,10 @@ public class TitleManage implements View.OnClickListener {
 
     }
 
+
+    public void setRightBtnSize(int width,int height){
+        ViewUtil.setViewSize(rightImg,width,height);
+    }
 
 }
 

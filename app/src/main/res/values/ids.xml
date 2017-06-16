@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
-
     <!--功能区-->
-
     <item name="iv_icon" type="id" />
     <item name="tv_text" type="id" />
+
+
+    <item name="btn_withdraw" type="id" />
 
 
     <!--常用组件-->
@@ -15,6 +15,7 @@
     <item name="scrollView" type="id"/>
     <item name="surfaceView" type="id" />
     <item name="viewSwitcher" type="id" />
+    <item name="navAnimation" type="id" />
 
 
 
@@ -41,5 +42,23 @@
     <item name="icon_4" type="id" />
     <item name="icon_5" type="id" />
 
+    <item name="iv_back" type="id"/>
 
+    <!--首页-->
+    <item name="iv_head" type="id"/>
+    <item name="tv_day" type="id"/>
+    <item name="tv_month" type="id"/>
+    <item name="tv_take" type="id"/>
+    <item name="tv_send" type="id"/>
+    <item name="ratingBar" type="id"/>
+
+
+
+    <item name="text_name" type="id"/>
+    <item name="text_phone" type="id"/>
+    <item name="text_money" type="id"/>
+    <item name="text_count" type="id" />
+
+    <item name="view_add" type="id"/>
+    <item name="view_cut" type="id"/>
 </resources>

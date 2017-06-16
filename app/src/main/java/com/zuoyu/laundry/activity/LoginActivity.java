@@ -1,5 +1,6 @@
 package com.zuoyu.laundry.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,11 +10,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.zuoyu.laundry.R;
+import com.zuoyu.laundry.application.MyApplication;
+import com.zuoyu.laundry.application.UrlManage;
 import com.zuoyu.laundry.base.BaseActivity;
+import com.zuoyu.laundry.entity.AuthEntity;
+import com.zuoyu.laundry.model.TokenAuthModel;
 import com.zuoyu.laundry.utils.IntentUtil;
+import com.zuoyu.laundry.utils.LogUtil;
 import com.zuoyu.laundry.utils.ToastUtil;
 import com.zuoyu.laundry.utils.ToolUtil;
+import com.zuoyu.laundry.utils.http.HttpResult;
 import com.zuoyu.laundry.widget.ClearEditText;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.zuoyu.laundry.R.id.tv_forget;
 
@@ -48,6 +58,12 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void initView() {
 
+//        if(!TokenAuthModel.getInstance().getToken().equals("")){
+//            Intent it = new Intent(LoginActivity.this,HomeActivity.class);
+//            startActivity(it);
+//            finish();
+//        }
+
         // 账号输入框
         usernameEdit = (ClearEditText) findViewById(R.id.et_username);
         usernameEdit.addTextChangedListener(watcher);
@@ -68,7 +84,8 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initAfterLayout(Bundle savedInstanceState) {
-
+        MyApplication.addActivity(this);
+        MyApplication.setStatusBar(this);
     }
 
 
@@ -76,7 +93,8 @@ public class LoginActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                parseLogin();
+                login();
+//                parseLogin();
                 break;
             case R.id.tv_forget:
                 IntentUtil.start(activity, ForgetActivity.class, false);
@@ -93,11 +111,11 @@ public class LoginActivity extends BaseActivity {
         public void beforeTextChanged(CharSequence s, int start, int count,
                                       int after) {
 
-            if (passwordEdit.hasFocus()) {
-                if (start < 6) {
-                    ToastUtil.show(getString(R.string.please_input_password_length));
-                }
-            }
+//            if (passwordEdit.hasFocus()) {
+//                if (start < 6) {
+//                    ToastUtil.show(getString(R.string.please_input_password_length));
+//                }
+//            }
 
         }
 
@@ -127,6 +145,42 @@ public class LoginActivity extends BaseActivity {
      * 【解析】登录
      */
     private void parseLogin() {
+
+        httpUtil.get(null, UrlManage.NOTICE_URL, new HttpResult<String>() {
+            @Override
+            public void onSuccess(String result) {
+                LogUtil.i(result);
+            }
+
+            @Override
+            public void onFailed(int errCord, String errMsg) {
+
+            }
+        });
+
+    }
+
+    private void login() {
+
+        Map<String, String> params = new HashMap<>();
+        params.put("name", usernameEdit.getText().toString());
+        params.put("password", passwordEdit.getText().toString());
+
+        httpUtil.post(params, UrlManage.LOGIN_URL, new HttpResult<AuthEntity>() {
+            @Override
+            public void onSuccess(AuthEntity result) {
+                //更新token
+                TokenAuthModel.getInstance().Update(result);
+                //跳转首页
+                Intent it = new Intent(LoginActivity.this,HomeActivity.class);
+                startActivity(it);
+            }
+
+            @Override
+            public void onFailed(int errCord, String errMsg) {
+               ToastUtil.show("用户名或密码错误！");
+            }
+        });
 
     }
 

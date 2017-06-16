@@ -109,9 +109,20 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
 
     @Override
     public void onClick(View v) {
-        // 需要时调用
+        // 需要时重写
     }
 
+
+    /**
+     * 简化findViewById 调用：img = id(R.id.img);
+     * @param id id名称
+     * @param <T> 泛型
+     * @return 对应的控件
+     */
+    @SuppressWarnings("unchecked")
+    protected final <T extends View> T id(int id) {
+        return (T) findViewById(id);
+    }
 
     /**
      * 以下为生命周期

@@ -18,6 +18,13 @@ import java.io.Serializable;
  */
 public class IntentUtil {
 
+    /**
+     * 订单选项卡标识
+     * 1。未取
+     * 2。未送
+     */
+    public static String  ORDER_NAV = "orderNav";
+
 
     /**
      * 传递对象

@@ -4,10 +4,12 @@ package com.zuoyu.laundry.application;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 
+import com.jaeger.library.StatusBarUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
-import com.zuoyu.laundry.utils.SharedUtil;
+import com.zuoyu.laundry.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,17 +82,24 @@ public class MyApplication extends Application {
      * 2.将用户基本信息置空
      * 3.跳转到登录页面
      * 4.移除所有的Activity
-     *
      */
     public static void exitApplication() {
 
-        SharedUtil.setEmptyAllData();
+//        SharedUtil.setEmptyAllData();
 //        MyApplication.setUserInfo(null);
 
         removeActivity();
 
     }
 
+    /**
+     * 设置沉浸式状态栏
+     *
+     * @param activity 当前Activity
+     */
+    public static void setStatusBar(Activity activity) {
+        StatusBarUtil.setColor(activity, ContextCompat.getColor(activity, R.color.bg_title), 0);
+    }
 
     /**
      * 将Activity添加到集合

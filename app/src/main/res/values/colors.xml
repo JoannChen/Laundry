@@ -7,23 +7,30 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
+    <color name="red">#ff0000</color>
 
-    <color name="bg_theme">#F2F2F2</color>
+    <color name="bg_theme">#f6f5f5</color>
+    <color name="bg_title">#1FB8ED</color>
     <color name="bg_loading">#222222</color>
     <color name="bg_month_item">#FB6122</color>
+
+    <color name="bg_line_gray">#cbcbcb</color>
+
 
     <color name="btn_checked">#00B8EF</color>
     <color name="btn_unchecked">#E5E5E5</color>
     <color name="btn_withdraw">#FF6108</color>
 
+    <color name="bg_orange">#ff9701</color>
 
-    <color name="font_gray">#888888</color>
+    <color name="font_gray">#616161</color>
     <color name="font_black">#333333</color>
     <color name="font_black_light">#50585E</color>
     <color name="font_red">#EC4F39</color>
-    <color name="font_orange">#F3A826</color>
+    <color name="font_orange">#f56404</color>
+    <color name="font_blue">#8debff</color>
 
-
+    <color name="notice_item">#effcff</color>
     <color name="line_gray">#c2c1c1</color>
     <color name="line_blue">#1FB8ED</color>
 

@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 import com.zuoyu.laundry.R;
 import com.zuoyu.laundry.adapter.MonthAdapter;
+import com.zuoyu.laundry.application.MyApplication;
 import com.zuoyu.laundry.base.BaseActivity;
+import com.zuoyu.laundry.utils.IntentUtil;
 import com.zuoyu.laundry.widget.HorizontalListView;
 
 import java.util.ArrayList;
@@ -41,12 +43,12 @@ public class MonthDetailsActivity extends BaseActivity implements GestureDetecto
 
     @Override
     public void initTitle() {
-        titleManage.setTitleText("月收成明细");
-        titleManage.setRightText("提现", R.color.white);
+        titleManage.setTitleText(getString(R.string.month_income_details));
+        titleManage.setRightText(getString(R.string.withdraw));
         titleManage.setRightBtnOnClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                IntentUtil.start(activity, WithdrawActivity.class, false);
             }
         });
     }
@@ -81,7 +83,14 @@ public class MonthDetailsActivity extends BaseActivity implements GestureDetecto
         });
     }
 
-
+    @Override
+    public void initAfterLayout(Bundle savedInstanceState) {
+        MyApplication.addActivity(this);
+        MyApplication.setStatusBar(this);
+    }
+    /**
+     * 初始化数据
+     */
     private void initData() {
         list.add("一月");
         list.add("二月");
@@ -97,10 +106,6 @@ public class MonthDetailsActivity extends BaseActivity implements GestureDetecto
         list.add("十二月");
     }
 
-    @Override
-    public void initAfterLayout(Bundle savedInstanceState) {
-
-    }
 
     @Override
     public boolean onDown(MotionEvent motionEvent) {

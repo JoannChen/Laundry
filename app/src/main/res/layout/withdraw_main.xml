@@ -30,6 +30,7 @@
             android:textSize="@dimen/px44" />
 
         <TextView
+            android:id="@+id/tv_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/px20"
@@ -38,6 +39,7 @@
             android:textSize="@dimen/px90" />
 
         <Button
+            android:id="@id/btn_withdraw"
             style="@style/Common_Button_Style"
             android:layout_marginBottom="@dimen/px60"
             android:layout_marginTop="@dimen/px50"

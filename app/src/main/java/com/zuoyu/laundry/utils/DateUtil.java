@@ -1,6 +1,7 @@
 package com.zuoyu.laundry.utils;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -140,4 +141,20 @@ public class DateUtil {
         return dateFormat.format(date);
     }
 
+
+    /**
+     * 指定日期转换成毫秒值
+     * @param date 日期字符串
+     * @return 毫秒值
+     */
+    public static long dateParserMillis(String date){
+
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault()).parse(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return c.getTimeInMillis();
+    }
 }

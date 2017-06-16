@@ -3,12 +3,20 @@
     style="@style/Layout_Match_Vertical_Style"
     android:background="@mipmap/bg_login">
 
+    <!--登录界面-->
+
+    <View
+        android:layout_width="@dimen/px600"
+        android:layout_height="@dimen/px210"
+        android:background="@mipmap/logo_xiyihui"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/px544"/>
 
     <!--账号-->
 
     <LinearLayout
         style="@style/Login_LinearLayout_Style"
-        android:layout_marginTop="@dimen/px860">
+        android:layout_marginTop="@dimen/px170">
 
         <TextView
             style="@style/Login_TextView_Style"

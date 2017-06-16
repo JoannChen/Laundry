@@ -19,56 +19,31 @@ public class UrlManage {
 //    private static final String HOST = "http://cloudcenter.51park.cn/CloudCenter/";
 
     /**
-     * alpha测试环境
+     * 测试环境
      */
-    private static final String HOST = "http://alphacloudcenter.51park.cn/CloudCenter/";
-
-    /**
-     * beta测试环境
-     */
-//    private static final String HOST = "http://betacloudcenter.51park.cn/CloudCenter/";
+    private static final String HOST = "http://wxtest.61weiqi.com/api/";
 
 
     /**
      * 1。登录
      */
-    public static final String LOGIN_URL = HOST + "mtlogin";
+    public static final String LOGIN_URL = HOST + "deliveryman/login";
+
+    /**
+     * 首页
+     */
+    public static final String HOME_URL = HOST + "deliveryman/index";
 
 
     /**
-     * 2。修改密码
+     * 刷新Token
      */
-    public static final String MODIFY_PW_URL = HOST + "mtupdatepwd";
-
+    public static final String REFRESH_URL = HOST + "authorizations/current";
 
     /**
-     * 3。退出登录
+     * 公告列表和内容
      */
-    public static final String EXIT_URL = HOST + "mtexit";
-
-
-    /**
-     * 4。优惠记录
-     */
-    public static final String COUPONS_URL = HOST + "mtcoupons";
-
-
-    /**
-     * 5。获取优惠券
-     */
-    public static final String GET_COUPONS_URL = HOST + "getcoupons";
-
-
-    /**
-     * 6。使用优惠券
-     */
-    public static final String USE_COUPONS_URL = HOST + "usecoupons";
-
-
-    /**
-     * 7。查找车辆
-     */
-    public static final String SEARCH_CAR_URL = HOST + "selectcar";
+    public static final String NOTICE_URL = HOST + "deliveryman/notice";
 
 
 }
