@@ -2,7 +2,6 @@ package com.zuoyu.laundry.model;
 
 import com.zuoyu.laundry.entity.AuthEntity;
 import com.zuoyu.laundry.utils.DateUtil;
-import com.zuoyu.laundry.utils.HttpUtil;
 import com.zuoyu.laundry.utils.LogUtil;
 import com.zuoyu.laundry.utils.SharedUtil;
 
